@@ -6,7 +6,7 @@ for i = 1:n_new
     demand2(time(i):min(time(i) + dur(i)-1,sim_s)) = demand2(time(i):min(time(i) + dur(i)-1,sim_s)) + int(i);
 end
 if T >1  
-    demand2 = sum(reshape(demand2,T, length(demand2)/T)',2);
+    demand2 = sum(reshape(demand2,T, length(demand2)/T))';
 end
 
 %if T == 1
