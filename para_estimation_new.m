@@ -8,8 +8,9 @@ end
 for i = 1:24
     dvar = var(demand_reshape(:,i));
     dmean = mean(demand_reshape(:,i));
-    dauto = autocorr(demand_reshape(:,i),2);
+    %dauto = autocorr(demand_reshape(:,i),2);
     dcov = dauto(3) * dvar;
+    dauto = cov(demand_reshape(1:end-1,i),demand_reshape(2:end,i))/dvar;
     dauto = dauto(2);
     dprob = length(find(demand_reshape(:,i)==0))/length(demand_reshape(:,i));
     syms x;
