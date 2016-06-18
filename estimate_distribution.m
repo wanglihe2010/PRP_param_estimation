@@ -16,7 +16,7 @@ demand2 = sum(reshape(demand1,times, length(demand1)/times)',2);
 tau(i,:) = para_est(3,:);
 tau_n(i,:) = para_est_n(3,:);
 
-
+i
 end
 
 tau_error = abs(tau - ones(100,1)*inputparam(3,:))./(ones(100,1)*inputparam(3,:))*100;
