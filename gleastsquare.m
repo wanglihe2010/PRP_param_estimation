@@ -1,0 +1,13 @@
+function l = gleastsquare(x, dmean, dvar, dauto, dcov, T)
+alpha = x(1);
+beta = x(2);
+tau = x(3);
+lambda = x(4);
+expmean = alpha*tau*lambda*T;
+expvar = 2*lambda*(tau)^3*(alpha^2+beta^2)*(T/tau-1+exp(-T/tau));
+expauto = 0.5*(1-exp(-T/tau))^2/(T/tau-1+exp(-T/tau));
+expcov = lambda*(tau)^3*(alpha^2+beta^2)*(1-exp(-T/tau))^2*exp(-T/tau);
+expprob = exp(-lambda*(tau+T));
+%l = (dmean - expmean)^2 / expmean^2 + (dvar - expvar)^2 / expvar^2 + (dauto - expauto)^2 / expauto^2 + (dauto*dvar - expauto*dvar)^2 / (expauto*dvar)^2;
+l = (dmean - expmean)^2 / expmean^2 + (dvar - expvar)^2 / expvar^2 + (dauto - expauto)^2 / expauto^2 +(dcov - expcov)^2 / expcov^2;
+%l = (dmean - expmean)^2 / expmean^2 + (dvar - expvar)^2 / expvar^2 + (dauto - expauto)^2 / expauto^2 +(dprob - expprob)^2 / expprob^2;
