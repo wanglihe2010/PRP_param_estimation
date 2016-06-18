@@ -1,7 +1,8 @@
 load('inputparam.mat');
-tau = zeros(100,24);
-tau_n = zeros(100,24);
-for i = 1:100
+n_mc = 500;
+tau = zeros(n_mc,24);
+tau_n = zeros(n_mc,24);
+for i = 1:n_mc
 
 [time, int, dur, sim_s] = pulse_generation(inputparam(1:3,:),inputparam(4,:), 1, 0);
 times = 2;
